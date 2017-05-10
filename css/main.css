@@ -1,58 +1,137 @@
-/* CSS Styles are defined below */
+html {
+    font-size: 62.5%;
+}
+
 body {
-    font-family: Sans-serif;
-    background: #333333;
+    font-size: 1.6rem; /* 16px */
 }
 
-h3 {
-    display: inline-block;
-    cursor: pointer;
-    margin: 0;
-}
-h3:hover {
-    color: #FFCC00!important;
+header {
+    height: 850px;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-h3 ~ span {
-    color: white;
-    font-size: 12px;
+nav {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+}
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    li.links {
+        text-transform: uppercase;
+        /*font-size: 1.3rem;*/
+        
+    }
+    .crest img {
+        display: none;
+    }
+    nav li a {
+        color: white;
+    }
+    nav li a:hover {
+        color: red;
+    }
+
+main {
+    height: 500px;
+    background: goldenrod;
 }
 
-#description {
-    display: none;
+footer {
+    height: 100px;
+    background: grey;
 }
 
-.logo {
-    width: 400px;
-}
-
-.buttons {
-    margin-top: 10px;
-}
-#button1, 
-#button2 {
-    background-color: #FFCC00;
-    border: 2px solid #FFCC00;
-    border-radius: 5px;
-    height: 30px;
-    text-transform: uppercase;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-#output {
-    color: #fff;
-    padding-top: 10px;
-}
 
 /**
  * Media Queries
+ * see: http://getbootstrap.com/css/#grid-options
  **/
-@media (max-width: 480px) {
-    .logo {
-        width: 300px;
+@media screen and (min-width: 320px) {
+    body::before {
+        content: "320px [col-xs]";
+        font-family: Arial, sans-serif;
+        color: green;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        font-weight: 700;
+        font-size: 1.5rem; /* 13px */
+        z-index: 9999;
     }
-    .buttons * {
-        font-size: 9px;
+}
+
+@media screen and (min-width: 768px) {
+    body::before {
+        content: "768px [col-sm]";
+        color: orange;
+    }
+    /*header {*/
+    /*    background-size: cover!important;*/
+    /*}*/
+    nav {
+        background: url(/images/menu_background.png) no-repeat center;
+        background-size: contain;
+    }
+    nav ul {
+        display: flex;
+    }
+    nav li {
+        display: inline-block;
+    }
+    li.links {
+        margin: 4px;
+        margin-top: 39px;
+        font-size: 1rem;
+    }
+    .crest img {
+        display: inline-block;
+        height: 115px;
+        margin-top: -2px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body::before {
+        content: "992px [col-md]";
+        color: black;
+    }
+    header {
+        background-size: cover!important;
+    }
+    nav {
+        background-size: 90%;
+        height: 109px;
+    }
+    .crest img {
+        height: 152px;
+    }
+    li.links {
+        margin: 4px; 
+        margin-top: 46px;
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body::before {
+        content: "1200px [col-lg]";
+        color: red;
+    }
+    nav {
+        height: 131px;
+    }
+    .crest img {
+        height: 164px;
+    }
+    li.links {
+        margin: 8px;
+        margin-top: 50px;
+        font-size: 1.3rem;
     }
 }

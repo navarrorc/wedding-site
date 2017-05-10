@@ -1,3 +1,5 @@
+collections:
+    photo_gallery:
 
 # Custom Excludes
 exclude: [gulpfile.js, package.json, node_modules, src]
