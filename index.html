@@ -3,32 +3,91 @@ layout: default
 title: Wedding Site
 ---
 
-{% comment %}
-    see:
-    http://bit.ly/2plubXU 
-    https://help.shopify.com/themes/liquid
-{% endcomment %}
-
 {% assign main_photo = site.photo_gallery | first %}
 
-<header class="row" style="background-image:url({{ site.github.url }}/photos/{{ main_photo.image_name }});">
-    <nav class="col-xs-12">
-        <ul>
-            <li class="links"><a href="#">home</a></li>
-            <li class="links"><a href="#">his story</a></li>
-            <li class="links"><a href="#">her story</a></li>
-            <li class="links"><a href="#">the wedding</a></li>
-            <li class="crest"><span><img src="{{ site.github.url }}/images/crest.png" alt="crest"></span></li>
-            <li class="links"><a href="#">our blog</a></li>
-            <li class="links"><a href="#">photo album</a></li>
-            <li class="links"><a href="#">registry</a></li>
-            <li class="links"><a href="#">contact</a></li>
-        </ul>
-    </nav>
-</header>
+{% capture photo_url %}{{ site.github.url }}/photos/{{ main_photo.image_name }}{% endcapture %}
 
 <main class="row">
-    Main
+    <section id="gallery" class="col-md-12 row">
+        <div>
+            <div class="thumbnails" style="background-image:url({{ photo_url }})"></div>
+            <div class="thumbnails" style="background-image:url({{ photo_url }})"></div>
+            <div class="thumbnails" style="background-image:url({{ photo_url }})"></div>
+            <div class="thumbnails" style="background-image:url({{ photo_url }})"></div>
+            <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+            <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+            <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+            <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+        </div>
+    </section>
+    <div class="overlap row">
+        <section class="col-md-6 row about">
+                    <h2 class="col-md-12">ABOUT US</h2>
+            <div class="col-md-7 img">
+                <img class="img img-responsive" src="{{ site.github.url }}/photos/{{ main_photo.image_name }}" alt="yikes">
+            </div>
+            <div class="col-md-5">
+                <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+                quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+                ut
+                </p>
+            </div>
+            <div class="col-md-12">
+                <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+                magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+                quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+                ut
+                </p>
+            </div>
+        </section>
+        
+        <section class="col-md-3 aside1">
+            <h3 class="col-md-12">Our Wedding Day Is Set</h3>
+             <div class="col-md-12 img">
+                <img class="img img-responsive" src="{{ site.github.url }}/photos/{{ main_photo.image_name }}" alt="yikes">
+            </div>
+            <div class="col-md-12 assideText">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+                magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+            </div>
+            <div class="row">
+                <div class="dummy col-md-6 col-sm-6">
+                    
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <button class="btn btn-default">Read More</button>
+                </div>
+            </div>
+        </section>
+            
+        <section class="col-md-3 aside2">
+            <h3 class="col-md-12">Our Wedding Day Is Set</h3>
+            <div class="col-md-12 img">
+                <img class="img img-responsive" src="{{ site.github.url }}/photos/{{ main_photo.image_name }}" alt="yikes">
+            </div>
+            <div class="col-md-12 assideText">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+                magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 dummy">
+                    
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <button class="btn btn-default">Read More</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="contact">
+    
+    </section>
 </main>
 
 

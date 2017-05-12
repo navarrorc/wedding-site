@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    font-size: 1.6rem; /* 16px */
+    background: #fff;
 }
 
 header {
@@ -37,17 +37,71 @@ nav {
     }
     nav li a:hover {
         color: red;
+        text-decoration: none;
     }
 
 main {
-    height: 500px;
-    background: goldenrod;
+    background: url("{{ site.github.url }}/images/bottom_background.png");
+    background-color: tan;
+    background-size: cover;
+    background-repeat: none;
+    background-position: bottom;
+}
+.asside1, .asside2,  .assideText{
+    padding-top: 10px;
 }
 
 footer {
-    height: 100px;
+    height: 50px;
     background: grey;
 }
+.overlap {
+    background: #fff;
+    color:#666;
+}
+.contact{
+    height: 400px;
+}
+.img img {
+    border: 3px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px 1px #666;
+    width:100%;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding: 10px 10px 0 10px;
+}
+button {
+    float: right;
+}
+body .container p {
+
+}
+#gallery {
+    margin: -213px 0 0px 0;
+    /*background: rgba(255, 255, 255, .4);*/
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+    #gallery > div {
+        background: rgba(255, 255, 255, .4);
+        border-radius: 5px;
+        padding: 10px 0;
+        /*border: 1px solid red;*/
+        margin: 0;
+        display: flex;
+        /*justify-content: space-between;*/
+    }
+    .thumbnails {
+        border: 3px solid #D7DDD8;
+        border-radius: 2px;
+        margin: 0 42px;
+        height: 85px;
+        width: 150px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
 
 /**
@@ -65,6 +119,11 @@ footer {
         font-weight: 700;
         font-size: 1.5rem; /* 13px */
         z-index: 9999;
+    }
+    .overlap{
+         margin: 0 5%;   
+         padding-top: 5px;
+         padding-bottom: 20px;
     }
 }
 
@@ -94,8 +153,12 @@ footer {
     .crest img {
         display: inline-block;
         height: 115px;
-        margin-top: -2px;
+        margin-top: -11px;
     }
+    .overlap{
+    margin: 0 10%;
+    padding: 20px 0px 10px 20px;
+}
 }
 
 @media screen and (min-width: 992px) {
@@ -117,6 +180,14 @@ footer {
         margin: 4px; 
         margin-top: 46px;
         font-size: 1.1rem;
+    }
+    .overlap{
+        margin: -50px 10% 0 10%;
+        padding: 20px 0px 10px 20px;
+        background:url("{{ site.github.url }}/images/white_backgroundpng.png");
+        background-size: cover;
+        background-repeat: none;
+        border: 5px solid rgba(255,255,255,.5);
     }
 }
 
