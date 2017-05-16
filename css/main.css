@@ -9,9 +9,8 @@ body {
 }
 
 header {
-    height: 850px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
 }
 
 nav {
@@ -27,7 +26,6 @@ nav {
     li.links {
         text-transform: uppercase;
         /*font-size: 1.3rem;*/
-        
     }
     .crest img {
         display: none;
@@ -42,10 +40,10 @@ nav {
 
 main {
     background: url("{{ site.github.url }}/images/bottom_background.png");
-    background-color: tan;
-    background-size: cover;
-    background-repeat: none;
-    background-position: bottom;
+    background-color: #CDCBC7;
+    /*background-size: cover;*/
+    background-repeat: repeat-y;
+    /*background-position: bottom;*/
 }
 .asside1, .asside2,  .assideText{
     padding-top: 10px;
@@ -56,8 +54,21 @@ footer {
     background: grey;
 }
 .overlap {
-    background: #fff;
+    /*border: 1px solid red;*/
+    /*border: 1px solid rgba(255,255,255,.5);*/
+    /*background: rgba(255,255,255,0.4) url("{{ site.github.url }}/images/white_backgroundpng.png") no-repeat;*/
+    /*background-size: contain;*/
+    border-radius: 2px;
+    background: rgba(255,255,255,.9);
     color:#666;
+    margin: 0 5%;   
+    margin-top: -12px;
+    /*padding: 10px;*/
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+.overlap p {
+    font-size: 1.3rem;
 }
 .contact{
     height: 400px;
@@ -94,10 +105,17 @@ body .container p {
         font-size: 1.5rem; /* 13px */
         z-index: 9999;
     }
-    .overlap{
-         margin: 0 5%;   
-         padding-top: 5px;
-         padding-bottom: 20px;
+    /*.overlap{*/
+    /*     margin: 0 5%;   */
+    /*     padding-top: 5px;*/
+    /*     padding-bottom: 20px;*/
+    /*}*/
+}
+
+@media screen and (min-width: 640px) {
+    body::before {
+        content: "640px [col-xs]";
+        color: red;
     }
 }
 
@@ -106,9 +124,9 @@ body .container p {
         content: "768px [col-sm]";
         color: orange;
     }
-    /*header {*/
-    /*    background-size: cover!important;*/
-    /*}*/
+    header {
+        height: 598px;
+    }
     nav {
         background: url({{ site.github.url }}/images/menu_background.png) no-repeat center;
         background-size: contain;
@@ -129,17 +147,18 @@ body .container p {
         height: 115px;
         margin-top: -11px;
     }
-    .overlap{
-    margin: 0 10%;
-    padding: 20px 0px 10px 20px;
-}
-#gallery {
-    margin: -213px 0 0px 0;
-    /*background: rgba(255, 255, 255, .4);*/
-    display: flex;
-    justify-content: center;
-    padding: 0;
-}
+    /*.overlap{*/
+        /*margin: 0 10%;*/
+        /*padding: 20px 0px 10px 20px;*/
+    /*}*/
+    #gallery {
+        /*margin: -213px 0 0px 0;*/
+        margin: -133px 0 0px 0;
+        /*background: rgba(255, 255, 255, .4);*/
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
     #gallery > div {
         background: rgba(255, 255, 255, .4);
         border-radius: 5px;
@@ -167,7 +186,8 @@ body .container p {
         color: black;
     }
     header {
-        background-size: cover!important;
+        height: 850px;
+        background-size: cover;
     }
     nav {
         background-size: 90%;
@@ -182,12 +202,14 @@ body .container p {
         font-size: 1.1rem;
     }
     .overlap{
-        margin: -50px 10% 0 10%;
-        padding: 20px 0px 10px 20px;
-        background:url("{{ site.github.url }}/images/white_backgroundpng.png");
-        background-size: cover;
-        background-repeat: none;
-        border: 5px solid rgba(255,255,255,.5);
+        background: rgba(255,255,255,0.4) url("{{ site.github.url }}/images/white_backgroundpng.png") no-repeat;
+        background-size: 100%;
+        /*margin: -50px 10% 0 10%;*/
+        /*padding: 20px 0px 10px 20px;*/
+        /*background:url("{{ site.github.url }}/images/white_backgroundpng.png");*/
+        /*background-size: cover;*/
+        /*background-repeat: no-repeat;*/
+        /*border: 5px solid rgba(255,255,255,.5);*/
     }
 }
 
@@ -195,6 +217,9 @@ body .container p {
     body::before {
         content: "1200px [col-lg]";
         color: red;
+    }
+    header {
+        height: 933px;
     }
     nav {
         height: 131px;

@@ -5,8 +5,9 @@
 {% endcomment %}
 
 {% assign main_photo = site.photo_gallery | first %}
+{% capture photo_url %}{{ site.github.url }}/photos/{{ main_photo.image_name }}{% endcapture %}
 
-<header class="row" style="background-image:url({{ site.github.url }}/photos/{{ main_photo.image_name }});">
+<header class="row" style="background-image:url({{ photo_url }});">
     <nav class="col-xs-12">
         <ul>
             <li class="links"><a href="#">home</a></li>
@@ -20,4 +21,8 @@
             <li class="links"><a href="#">contact</a></li>
         </ul>
     </nav>
+    <img src="{{ photo_url }}" class="img-responsive" style="visibility: hidden;margin-top: -100px;display: inline-block;" alt="yikes" />
+    {% comment %}
+        see: http://bit.ly/2q7D5HN
+    {% endcomment %}
 </header>
