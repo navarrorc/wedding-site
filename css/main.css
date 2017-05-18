@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: #fff;
+    background: #000;
 }
 
 header {
@@ -50,8 +50,7 @@ main {
 }
 
 footer {
-    height: 50px;
-    background: grey;
+        
 }
 .overlap {
     /*border: 1px solid red;*/
@@ -71,7 +70,8 @@ footer {
     font-size: 1.3rem;
 }
 .contact{
-    height: 400px;
+   margin: 0 5%;   
+   padding-bottom: 200px;
 }
 .img img {
     border: 3px solid #fff;
