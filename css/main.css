@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: #000;
+    background: url("{{ site.github.url }}/images/full_background.png");
 }
 
 header {
@@ -87,6 +87,25 @@ button {
 }
 body .container p {
 
+}
+.weddingTop div img {
+   height: 250px;
+   width: 250px;
+}
+.weddingTop {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.weddingMain {
+    background: #fff;
+    padding: 10px;
+    text-align: center;
+}
+.weddingMain h3 {
+    padding-bottom: 50px;
 }
 
 /**
@@ -177,6 +196,21 @@ body .container p {
         background-size: cover;
         background-repeat: no-repeat;
     }
+    .weddingTop {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 3%;
+}
+.weddingMain {
+    background: url("{{ site.github.url }}/images/white_backgroundpng.png");
+    background-repeat: none;
+    background-size: cover;
+    border: 2px solid rgba(255,255,255, .6);
+    margin: 0 3%;
+    text-align: left;
+}
 
 }
 
