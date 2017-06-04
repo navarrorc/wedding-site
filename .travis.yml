@@ -1,8 +1,12 @@
 language: ruby
+cache:
+  bundler: true
+  directories: node_modules
 rvm:
   - 2.3.0
 sudo: false
 script:
+  - "bundle install" # to cache bundle
   - "chmod +x script/build.sh"
   - "./script/build.sh"
 env:
