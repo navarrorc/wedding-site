@@ -1,13 +1,4 @@
-{% comment %}
-    see:
-    http://bit.ly/2plubXU 
-    https://help.shopify.com/themes/liquid
-{% endcomment %}
-
-{% assign main_photo = site.photo_gallery | first %}
-{% capture photo_url %}{{ site.github.url }}/photos/{{ main_photo.image_name }}{% endcapture %}
-
-<header class="row" style="background-image:url({{ photo_url }});">
+  <div class="row">
     <nav class="col-xs-12">
         <ul>
             <li class="links"><a href="{{ site.github.url }}/index.html">home</a></li>
@@ -21,8 +12,4 @@
             <li class="links"><a href="{{ site.github.url }}/pages/contact.html">contact</a></li>
         </ul>
     </nav>
-    <img src="{{ photo_url }}" class="img-responsive" style="visibility: hidden;margin-top: -100px;display: inline-block;" alt="yikes" />
-    {% comment %}
-        see: http://bit.ly/2q7D5HN
-    {% endcomment %}
-</header>
+  </div>
