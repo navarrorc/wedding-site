@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.3.0
+sudo: required
+script:
+- chmod +x script/build
+- "./script/build"
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+deploy: 
+    provider: firebase
+    token:
+      secure: "G93quuLuzgignG2hmKmi3cfsR0QOdtQ3ENO9CHtvZahmRSF/4K9wsd88Dib4xlecs0NDlgtA+yNOxa52bJv9IBTEXdeRymQGQ2GMfPG/yKkv34901arjpitxImOC2vhrpa767EyqAdxgS7jOAAVQAy6Km+j3FXmf4WqKyxs33RYtdP2JM8rQE5rl2QVXadG6oU2HOOv7SHyr7Bsn7pa+Ql/H6llOs43SzxDcbtxEnogB7yScKmOeUzEd+e6L8DiTDMcZ9gNuEWoCzg9Vw7FKAzK726CTb4kWlFiJJTp0uqmlJif2uCJ7ooaHUV7cPaWFchYBfcWuX8mjt73WWf2SbKKgPuFGxYwsCzOIBd6R/jTiZvjtSf6sjoadAsPu+DZt9oQuhJOJayc/HIrkK87sYf8j0qJ3mdAOLzz5b/+uNbbOr/MnKRNMJXkQgVQb3ZdxAfEE5DiUVR53bFe9x6SpyAINMyz10pTpFjCdzTK8SneHL4+GU+YQcriaKsgrhr5RWp5zDiVR15drgR0qeoNbK/gBht8Tvbm48OQq9Ao/DLKz04aclXwrNZNXbEdo0lSNzaT/Fsj0yQz5RzqESLKn9JVt8aCHlE+TucUpsxtiwDPTJjqYytEh+5dj+dKAjKyR+0fZjeEgNFFS3WFa0YPLcc25k6o4vwFYefQxqGwNm8I="
+    project:  "wedding-58cd5"
