@@ -8,6 +8,9 @@ script:
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  
+before_deploy:
+  - nvm install node
 deploy: 
     provider: firebase
     token:
