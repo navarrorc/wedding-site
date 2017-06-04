@@ -1,7 +1,8 @@
 language: ruby
 rvm:
   - 2.3.0
-sudo: required
+sudo: false
+cache: bundler
 script:
   - "chmod +x script/build.sh"
   - "./script/build.sh"
