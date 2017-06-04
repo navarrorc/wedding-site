@@ -2,4 +2,4 @@ collections:
     photo_gallery:
 
 # Custom Excludes
-exclude: ["Gemfile", "Gemfile.lock", "gulpfile.js", "package.json", "vendor/", "node_modules/", "src/", "script/", "firebase.json"]
+exclude: ["Gemfile", "Gemfile.lock", "gulpfile.js", "package.json", "firebase.json", "vendor/", "node_modules/", "src/", "script/"]
