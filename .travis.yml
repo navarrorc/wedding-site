@@ -10,7 +10,7 @@ env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   
 before_deploy:
-  - nvm install node
+  - nvm install node v7.10.0
 deploy: 
     provider: firebase
     token:
