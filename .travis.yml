@@ -1,17 +1,20 @@
 language: ruby
 rvm:
-- 2.3.0
+  - 2.3.0
 sudo: required
 script:
-- chmod +x script/build.sh
-- "./script/build.sh"
+  - "chmod +x script/build.sh"
+  - "./script/build.sh"
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 before_deploy:
-  - nvm install node v7.10.0
+  - "nvm install node v7.10.0"
+  - "ls -l _site/"
 deploy:
   provider: firebase
   token:
     secure: "hTuERBeS+WJCRevN6W7XvdDnTY/JblI97FCzO7FN86hv4XtV9/ABw1WgM8OkEPQ7AYVNwkAAZuSZzl2KFlBu3SSg4TPn+6sgQoUqY1KoGPwFImohWEKwxXRdmorGypVYUzv6Gn+b7rZctMZ/s+ODss58MdjZDOqD9kYY8+t6EBgrJqdsjUbwFTigP7bHk/7I7DZFnXJJBTHRVyzWL25koPvbHrsl/y4WH+rDPH60VsiDwyp4XXoJ3B3AIRQ7na9qg2SC6sg3KfTwqcc4AcenCj/vrwo8suvVoccZnrzKEIeWU+EqkngZvUDSz6NCJ6elxemLR2Sfhn/Y9hCFb95JL1iHseNDICMwnFFEf49zxadGSlJiCkx4AKRFPOg367Khch9WUJMc7R4+jWgt9dAjsobXnHAtxzPp5/vMn7nrBlnXkG3gWu54JMNPfWJ2I1E0NY528Fqaz/76MNLG/xqx467jiJx1uq0Uu2p54HeBO7T+DYTGqz30M1wBA9mjE+iMEeyD2LV4I/V0ff6wXMGVPZP4EUPIgkO94PjVzpY8BghkamiWLzagOX3GfDBGf3mzdLeRuRi2PKbEI1S8pkBA71tO4EYYIj2aamJoES7eyp3LnoYLWSDT+J5QsctCvpyzUnm32LqrDAPtc3xW4nPFXR0BGZo7pRjTNS1bLt0Ltgw="
-  project: "wedding-58cd5"
+after_deploy:
+  - "ls -l _site/"
+  - "echo Deployed Successfully!"
