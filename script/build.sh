@@ -1,2 +1,2 @@
-jekyll build
+bundle exec jekyll build
 #htmlproofer ./_site
