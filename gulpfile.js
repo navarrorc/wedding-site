@@ -1,10 +1,8 @@
 var gulp = require("gulp"),
     gutil = require('gulp-util'),
-    watch = require("gulp-watch"),
     child = require("child_process"),
     webpack = require("webpack"),
     browserSync = require("browser-sync").create(),
-    runSequence  = require("run-sequence").use(gulp),
     path = require("path"),
     _ = require("lodash");
     
@@ -21,7 +19,7 @@ function onBuild(done) {
                 {
                     colors: true,
                     hash: false,
-                    version: false,
+                    version: true,
                     timings: false,
                     assets: true,
                     chunks: false,
@@ -32,8 +30,7 @@ function onBuild(done) {
                     reasons: false,
                     source: false,
                     errorDetails: true,
-                    chunkOrigins: false,
-                    version: true
+                    chunkOrigins: false
                 }
             ));
         }
@@ -41,7 +38,7 @@ function onBuild(done) {
         if (done) {
             done();
         }
-    }
+    };
 }
   
 /**
@@ -64,17 +61,17 @@ var devConfig  = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["env", "react"]
+                        presets: ["env"]
                     }
                 }
             }
         ]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
-        })
+        // new webpack.ProvidePlugin({
+        //     $: 'jquery',
+        //     jQuery: 'jquery'
+        // })
     ]
 };
 
@@ -103,22 +100,29 @@ prodConfig.output.filename = prodConfig.output.filename.replace(/\.js$/, ".min.j
  * Tasks
  */
 gulp.task("webpack", function() {        
-    var webpackConfig = isProd ? prodConfig : devConfig;    
+    var webpackConfig = isProd ? prodConfig : devConfig;  
+    var execute = function(){
+        gulp.start("jekyll");
+        gulp.start("serve");
+    };
     webpack(webpackConfig).watch(100, function (err, status) {
-        onBuild()(err, status);
-    })
+        onBuild(execute)(err, status);
+    });
 });
 
 gulp.task("jekyll", function() {
     // see: https://aaronlasseigne.com/2016/02/03/using-gulp-with-jekyll/
     var exec = process.platform === "win32" ? "jekyll.bat" : "jekyll"; // see: http://bit.ly/2pzQeHk
-    var jekyll = child.spawn(exec, ["build", "--watch"]); 
+    var jekyll = child.spawn(exec, ["build", "--watch", "--incremental", "--drafts"]); 
     var jekyllLogger = function(buffer) {
         buffer.toString()
             .split(/\n/)
             .forEach(function(message){
                 if(message) {
-                    gutil.log("Jekyll: " + message);
+                    // if (message !== previousMessage){
+                        gutil.log("Jekyll: " + message);
+                    // }
+                    // previousMessage = message;
                 }
             });
     };
@@ -129,21 +133,25 @@ gulp.task("jekyll", function() {
 
 gulp.task("serve", function(){
     var options = {
-        server: {baseDir: "_site/"},
+        files: ["_site/**"],
+        server: {baseDir: "_site"},
         port: process.env.PORT || 8080,
         ui: { port: 8081 },
-        ghostMode: false
+        ghostMode: false,
+        https: {
+            key: "/etc/letsencrypt/live/flexboxtv.com/privkey.pem",
+            cert: "/etc/letsencrypt/live/flexboxtv.com/cert.pem"
+        }
     };
-    browserSync.init(options);    
-    watch("_site/**/*", browserSync.reload); // see: http://bit.ly/2qJeZ3d
+    browserSync.init(options, function() { /* see: http://bit.ly/2std0F1 */ });    
 });
 
 gulp.task("build", function(callback) {
 	isProd = true;
-	return runSequence("jekyll", "serve", "webpack");
+	gulp.start("webpack");
 });
 
 gulp.task("default", function (callback) {
     isProd = false;
-    return runSequence("jekyll", "serve", "webpack");
-})
+    gulp.start("webpack");
+});

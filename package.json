@@ -18,22 +18,14 @@
   "homepage": "https://github.com/username/username.github.io#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",    
+    "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
-    "babel-preset-react": "^6.24.1",    
     "browser-sync": "^2.16.0",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8",
-    "gulp-watch": "^4.3.11",
-    "run-sequence": "^1.2.2",
     "webpack": "^2.5.0"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
-    "moment": "^2.18.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "rxjs": "^5.3.1"
+    "lodash": "^4.17.4"
   }
 }
