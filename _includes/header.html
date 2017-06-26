@@ -7,22 +7,41 @@
 {% assign main_photo = site.photo_gallery | first %}
 {% capture photo_url %}{{ site.github.url }}/photos/{{ main_photo.image_name }}{% endcapture %}
 
-<header class="row" style="background-image:url({{ photo_url }});">
-    <nav class="col-xs-12">
-        <ul>
-            <li class="links"><a href="{{ site.github.url }}/index.html">home</a></li>
-            <li class="links"><a href="{{ site.github.url }}/pages/hisStory.html">his story</a></li>
-            <li class="links"><a href="{{ site.github.url }}/pages/herStory.html">her story</a></li>
-            <li class="links"><a href="{{ site.github.url }}/pages/theWedding.html">the wedding</a></li>
-            <li class="crest"><span><img src="{{ site.github.url }}/images/crest.png" alt="crest"></span></li>
-            <li class="links"><a href="{{ site.github.url }}/pages/ourBlog.html">our blog</a></li>
-            <li class="links"><a href="{{ site.github.url }}/pages/photoGallery.html">photo album</a></li>
-            <li class="links"><a href="{{ site.github.url }}/pages/registry.html">registry</a></li>
-            <li class="links"><a href="{{ site.github.url }}/pages/contact.html">contact</a></li>
-        </ul>
-    </nav>
-    <img src="{{ photo_url }}" class="img-responsive" style="visibility: hidden;margin-top: -100px;display: inline-block;" alt="yikes" />
-    {% comment %}
-        see: http://bit.ly/2q7D5HN
-    {% endcomment %}
-</header>
+<header class="carousel slide" id="featured" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#featured" data-slide-to="0" class="active"></li>
+        <li data-target="#featured" data-slide-to="1"></li>
+        <li data-target="#featured" data-slide-to="2"></li>
+        <li data-target="#featured" data-slide-to="3"></li>
+        <li data-target="#featured" data-slide-to="4"></li>
+    </ol>
+    <div class="overlay d-flex flex-column justify-content-end align-items-center"  style="background-color: rgba(0,0,0,.5)">
+        <h6 class="header-top-text">Our Love Story Continues</h6>
+        <h1>Nela & Robert</h1>
+        <img src="{{ site.github.url }}/images/heart-logo.png" alt="heart logo" style="width:15rem; margin-bottom: 1.2rem">
+        <h5>13 October 2017</h5>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="background: #000 url({{ site.github.url }}/photos/holding-hands.jpg) no-repeat 60% 13%;background-size: cover">
+        </div>
+        <div class="carousel-item" style="background: #000 url({{ site.github.url }}/photos/hug.jpg) no-repeat 60% 32%;background-size: cover">
+        </div>
+        <div class="carousel-item" style="background: #000 url({{ site.github.url }}/photos/kiss.jpg) no-repeat 60% 13%;background-size: cover">
+        </div>
+        <div class="carousel-item" style="background: #000 url({{ site.github.url }}/photos/leaning-on-tree.jpg) no-repeat 50% 13%;background-size: cover">
+        </div>
+        <div class="carousel-item" style="background: #000 url({{ site.github.url }}/photos/kiss-on-stairs.jpg) no-repeat 50% 13%;background-size: cover">
+        </div>
+        
+    </div> <!-- carousel-inner -->
+    <a class="carousel-control-prev" href="#featured" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true">
+            <span class="sr-only">previous</span>
+        </span>
+    </a>
+    <a class="carousel-control-next" href="#featured" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true">
+            <span class="sr-only">next</span>
+        </span>
+    </a>
+</header> <!-- carousel -->

@@ -10,7 +10,7 @@ script:
   - "chmod +x script/build.sh"
   - "./script/build.sh"
 before_deploy:
-  - "nvm install v7.10.0"
+  - "nvm install v8.1.1"
 deploy:
   skip_cleanup: true
   provider: firebase

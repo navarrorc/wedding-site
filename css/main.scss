@@ -1,0 +1,126 @@
+---
+---
+// Global Styles
+// html {
+//     font-size: 62.5%;
+// }
+@import "fonts";
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    // background: url("{{ site.github.url }}/images/full_background.png");
+}
+
+// Navigation Bar Styles
+.site-nav {
+    position: absolute;
+    top: 3rem;
+    right: 15px;
+    background-color: rgba(0,0,0,.5);
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 9999;
+    .menu-icon img {
+        display: block;
+        float: right;
+        width: 40px;
+        //   height: 26px;
+        //   padding-top: 10px;
+        margin: .3rem;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+    }
+    .menu-wrapper {
+        position: relative;
+    }
+    .menu-text {
+        color: rgba(255,255,255,.5);    
+        position: absolute;
+        top: 14px;
+        right: 11px;
+        font-size: .8rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .trigger {
+        clear: both;
+        display: none;
+    }
+    
+    &:hover .trigger {
+        display: block;
+    }
+    
+    .link {
+        font: 400 1.6rem "Lato", sans-serif;
+        color: #fff;
+        display: block;
+        padding: 5px 10px;
+        margin-left: 20px;
+        // vertical-align: super;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    
+    .pink-heart {
+        display: none;
+    }
+}
+
+// Header Styles
+header {
+    position: relative;
+    
+    .overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        // height: 100vh;
+        height: 1000px;
+        font-family: "Lato", sans-serif;
+        color: rgb(255, 255, 255);
+        z-index: 1;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        // position: relative;
+        z-index: 2;
+    }
+    .carousel-item {
+        // height: 100vh;
+        height: 1000px;
+    }
+    h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 5rem;
+    }
+    h6 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    h5 {
+        font-size: 2rem;
+        margin-bottom: 6.3rem;
+    }
+}
+
+
+
+footer {
+    // height: 100px;
+    // background: red;
+}
+
+
+// Overrides (Bootstrap)
+@import "overrides";
+
+
+// Media Queries
+@import "media-queries";

@@ -1,0 +1,98 @@
+---
+layout: default
+title: Wedding Site
+---
+
+{% assign main_photo = site.photo_gallery | first %}
+
+{% capture photo_url %}{{ site.github.url }}/photos/{{ main_photo.image_name }}{% endcapture %}
+<main class="row">
+    <!--<section id="gallery" class="col-md-12 row">-->
+    <!--    <div>-->
+    <!--        <div class="thumbnails" style="background-image:url({{ photo_url }})">-->
+    <!--        <div class="thumbnails" style="background-image:url({{ photo_url }})">-->
+    <!--        <div class="thumbnails" style="background-image:url({{ photo_url }})">-->
+    <!--        <div class="thumbnails" style="background-image:url({{ photo_url }})">-->
+    <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+    <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+    <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+    <!--<img class="col-md-3" src="{{ photo_url }}" alt="yikes">-->
+    <!--    </div>-->
+    <!--</section>-->
+    <div class="overlap row">
+        <section class="col-md-6 about">
+            <h2>ABOUT US</h2>
+            
+            <div class="col-md-7 img">
+                <img class="img img-responsive" src="{{ site.github.url }}/photos/{{ main_photo.image_name }}" alt="yikes" />
+            </div>
+            <div class="col-md-5">
+                <p class="editable">testing out cloudcannon!!!!</p>
+            </div>
+            <div class="col-md-12">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+                </p>
+            </div>
+        </section>
+
+        <section class="col-md-3 aside1">
+            <h3 class="col-md-12">Our Wedding Day Is Set</h3>
+            <div class="col-md-12 img">
+                <img class="img img-responsive" src="{{ site.github.url }}/photos/{{ main_photo.image_name }}" alt="yikes" />
+            </div>
+            <div class="col-md-12 assideText">
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+            </div>
+            <div class="row">
+                <div class="dummy col-md-6 col-sm-6">
+
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <button class="btn btn-default">Read More</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="col-md-3 aside2">
+            <h3 class="col-md-12">Our Wedding Day Is Set</h3>
+            <div class="col-md-12 img">
+                <img class="img img-responsive" src="{{ site.github.url }}/photos/{{ main_photo.image_name }}" alt="yikes" />
+            </div>
+            <div class="col-md-12 assideText">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 dummy">
+
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <button class="btn btn-default">Read More</button>
+                </div>
+            </div>
+        </section>
+    </div>
+  <!--      <section class="contact">-->
+  <!--            <div class="col-md-6">-->
+  <!--    <h2>CONTACT US/RSVP</h2>-->
+  <!--    <div class="col-md-6">-->
+  <!--      <input class="form-control" type="text" name="Name"/>-->
+  <!--      <br>-->
+  <!--      <input class="form-control" type="text" name="Email"/>-->
+  <!--      <br>-->
+  <!--      <button class="btn btn-success btn-block">Send Message</button>-->
+  <!--    </div>-->
+  <!--    <div class="col-md-6">-->
+  <!--      <input style="height: 100%" type="text" name="Message"/>-->
+  <!--    </div>-->
+  <!--</div>-->
+  
+  <!--<div class="col-md-6">-->
+      
+  <!--</div>-->
+  <!--  </section>-->
+</main>
+
+

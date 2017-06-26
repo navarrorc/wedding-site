@@ -1,0 +1,105 @@
+/**
+ * Media Queries
+ * see: http://getbootstrap.com/css/#grid-options
+ **/
+@media screen and (min-width: 320px) {
+    body::before {
+        content: "320px [col]";
+        font-family: Arial, sans-serif;
+        color: green;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        font-weight: 700;
+        font-size: 1.6rem; /* 16px */
+        z-index: 9999;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    body::before {
+        content: "576px [col-sm]";
+        color: red;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body::before {
+        content: "768px [col-md]";
+        color: orange;
+    }
+    .site-nav {
+        height: 6.5rem;
+        left: 0;
+        right: 0;
+        background-color: rgba(255,255,255,.2);
+        border: 0;
+        border-radius: 0;
+        text-align: center;
+        
+        .trigger {
+          display: block;
+        }
+        .menu-icon {
+          display: none;
+        }
+        .link {
+            display: inline-block;
+            height: 6.5rem;
+            padding-top: 2.5rem;
+            // padding-top: 3.1rem;
+            // padding-top: 27px;
+            margin:0;
+            width: 11rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            // vertical-align: super;
+            
+            &:hover {
+                background: #EA4F86;
+                text-decoration: none;
+            }
+            &.active-link {
+                background: #EA4F86;
+            }
+        }
+        .link:nth-child(5) {
+            margin-left: 0;
+        }
+        .pink-heart {
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            margin: 0 1rem;
+            margin-top: -13px;
+            img {
+                width: 10rem;
+            }
+            span {
+                position: absolute;
+                top: 3.1rem;
+                left: 1.5rem;
+                font-size: 2rem;
+                font-family: "Great Vibes", cursive;
+                font-weight: 700;
+            }
+        }
+    }
+ 
+}
+
+@media screen and (min-width: 992px) {
+    body::before {
+        content: "992px [col-lg]";
+        color: black;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body::before {
+        content: "1200px [col-xl]";
+        color: purple;
+    }
+}
