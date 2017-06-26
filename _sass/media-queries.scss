@@ -8,8 +8,8 @@
         font-family: Arial, sans-serif;
         color: green;
         position: fixed;
-        bottom: 0;
-        right: 0;
+        top: 0;
+        left: 0;
         font-weight: 700;
         font-size: 1.6rem; /* 16px */
         z-index: 9999;
@@ -21,6 +21,14 @@
         content: "576px [col-sm]";
         color: red;
     }
+    header {
+        .overlay,
+        .carousel-item {
+            height: 873px;
+        }
+    }
+    
+    
 }
 
 @media screen and (min-width: 768px) {
@@ -87,6 +95,12 @@
             }
         }
     }
+    header {
+        .overlay,
+        .carousel-item {
+            height: 1125px;
+        }
+    }
  
 }
 
@@ -95,12 +109,24 @@
         content: "992px [col-lg]";
         color: black;
     }
+    header {
+        .overlay,
+        .carousel-item {
+            height: 1471px;
+        }
+    }
 }
 
 @media screen and (min-width: 1200px) {
     body::before {
         content: "1200px [col-xl]";
         color: purple;
+    }
+    header {
+        .overlay,
+        .carousel-item {
+            height: 1930px;
+        }
     }
 }
 

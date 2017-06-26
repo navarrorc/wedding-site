@@ -75,15 +75,14 @@ body {
 
 // Header Styles
 header {
-    position: relative;
-    
     .overlay {
         position: absolute;
         left: 0;
         right: 0;
         // height: 100vh;
-        height: 1000px;
+        height: 489px;
         font-family: "Lato", sans-serif;
+        background-color: rgba(0,0,0,.4);
         color: rgb(255, 255, 255);
         z-index: 1;
     }
@@ -94,7 +93,9 @@ header {
     }
     .carousel-item {
         // height: 100vh;
-        height: 1000px;
+        background-size: contain !important;
+        background-position: center !important;
+        height: 489px;
     }
     h1 {
         font-family: "Great Vibes", cursive;
@@ -106,7 +107,7 @@ header {
     }
     h5 {
         font-size: 2rem;
-        margin-bottom: 6.3rem;
+        margin-bottom: 4rem;
     }
 }
 
