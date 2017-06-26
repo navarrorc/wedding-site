@@ -80,7 +80,7 @@ header {
         left: 0;
         right: 0;
         // height: 100vh;
-        height: 489px;
+        // height: 489px;
         font-family: "Lato", sans-serif;
         background-color: rgba(0,0,0,.4);
         color: rgb(255, 255, 255);
@@ -88,14 +88,12 @@ header {
     }
     .carousel-control-prev,
     .carousel-control-next {
-        // position: relative;
         z-index: 2;
     }
-    .carousel-item {
-        // height: 100vh;
-        background-size: contain !important;
-        background-position: center !important;
-        height: 489px;
+    .carousel-item img {
+        // fixes bootstrap 4 bug: bit.ly/bootstrap4-carousel
+        width: 100%;
+        height: 100%;
     }
     h1 {
         font-family: "Great Vibes", cursive;
