@@ -16,6 +16,13 @@
     }
 }
 
+@media screen and (min-width: 480px) {
+  body::before {
+    content: "480px [col]";
+    color: goldenrod;
+  }
+}
+
 @media screen and (min-width: 576px) {
     body::before {
         content: "576px [col-sm]";
@@ -95,12 +102,6 @@
             }
         }
     }
-    // header {
-    //     .overlay,
-    //     .carousel-item {
-    //         height: 1125px;
-    //     }
-    // }
  
 }
 
@@ -109,12 +110,6 @@
         content: "992px [col-lg]";
         color: black;
     }
-    // header {
-    //     .overlay,
-    //     .carousel-item {
-    //         height: 1471px;
-    //     }
-    // }
 }
 
 @media screen and (min-width: 1200px) {
@@ -122,12 +117,10 @@
         content: "1200px [col-xl]";
         color: purple;
     }
-    // header {
-    //     .overlay,
-    //     .carousel-item {
-    //         height: 1930px;
-    //     }
-    // }
+    header {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 @media screen and (min-width: 1400px) {
