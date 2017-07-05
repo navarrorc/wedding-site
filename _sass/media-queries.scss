@@ -2,6 +2,8 @@
  * Media Queries
  * see: http://getbootstrap.com/css/#grid-options
  **/
+ 
+// width based media queries
 @media screen and (min-width: 320px) {
     body::before {
         content: "320px [col]";
@@ -117,10 +119,10 @@
         content: "1200px [col-xl]";
         color: purple;
     }
-    header {
-        width: 90%;
-        margin: 0 auto;
-    }
+    // header {
+    //     width: 90%;
+    //     margin: 0 auto;
+    // }
 }
 
 @media screen and (min-width: 1400px) {
@@ -141,5 +143,12 @@
     body::before {
         content: "1800px [col-xl]";
         color: yellow;
+    }
+}
+
+// height based media queries
+@media screen and (max-height: 480px) {
+    .header-text {
+        display: none;
     }
 }
