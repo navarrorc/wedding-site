@@ -8,6 +8,15 @@
 {% capture photo_url %}{{ site.github.url }}/photos/{{ main_photo.image_name }}{% endcapture %}
 
 <header class="carousel slide" id="featured" data-ride="carousel">
+    <div class="overlay d-flex flex-column align-items-center justify-content-end" style="height:100%">
+        <div style="text-align: center" class="header-text">
+            <h6 class="header-top-text">Our Love Story Continues</h6>
+            <h1>Nela & Robert</h1>
+            <img src="{{ site.github.url }}/images/heart-logo.png" alt="heart logo" class="white-heart-logo">
+            <h5>13 October 2017</h5>
+        </div>
+        <a href="#"><img src="{{ site.github.url }}/images/scroll-icon.png" alt="scroll icon" class="scroll-icon"></a>
+    </div>
     <ol class="carousel-indicators">
         <li data-target="#featured" data-slide-to="0" class="active"></li>
         <li data-target="#featured" data-slide-to="1"></li>
@@ -16,14 +25,6 @@
         <li data-target="#featured" data-slide-to="4"></li>
         <li data-target="#featured" data-slide-to="5"></li>
     </ol>
-    <div class="overlay d-flex flex-column justify-content-end" style="height:100%">
-        <div style="text-align: center" class="header-text">
-            <h6 class="header-top-text">Our Love Story Continues</h6>
-            <h1>Nela & Robert</h1>
-            <img src="{{ site.github.url }}/images/heart-logo.png" alt="heart logo" class="white-heart-logo">
-            <h5>13 October 2017</h5>
-        </div>
-    </div>
     <div class="carousel-inner">
         <div class="carousel-item active" style="background-image: url({{ site.github.url }}/photos/holding-hands-992-optimized.jpg); background-position: center 12%"></div>
         <div class="carousel-item" style="background-image: url({{ site.github.url }}/photos/nose-touch-992-optimized.jpg); background-position: center 7%"></div>
@@ -34,13 +35,17 @@
         
     </div> <!-- carousel-inner -->
     <a class="carousel-control-prev" href="#featured" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true">
-            <span class="sr-only">previous</span>
-        </span>
+        <div class="nav-icon-container-prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true">
+                <span class="sr-only">previous</span>
+            </span>
+        </div>
     </a>
     <a class="carousel-control-next" href="#featured" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true">
-            <span class="sr-only">next</span>
-        </span>
+        <div class="nav-icon-container-next">
+            <span class="carousel-control-next-icon" aria-hidden="true">
+                <span class="sr-only">next</span>
+            </span>
+        </div>
     </a>
 </header> <!-- carousel -->

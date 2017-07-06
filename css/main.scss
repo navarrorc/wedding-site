@@ -86,6 +86,18 @@ header {
         color: rgb(255, 255, 255);
         z-index: 1;
     }
+    .carousel-indicators {
+        justify-content: flex-end;
+        margin-right: 2%;
+    }
+    .carousel-indicators .active {
+        background-color: #EA4F86;
+    }
+    .carousel-indicators li {
+        background-color: rgba(234,79,134,.3);
+        height: 11px;
+        max-width: 10px;
+    }
     .carousel-item {
         height: 100vh;
         background-repeat: no-repeat;
@@ -94,6 +106,27 @@ header {
     .carousel-control-prev,
     .carousel-control-next {
         z-index: 2;
+    }
+    .carousel-control-prev {
+        justify-content: flex-start;
+        opacity: .9;
+    }
+    .nav-icon-container-prev {
+        padding: 1rem;
+        padding-top: 1.4rem;
+        padding-left: 1.3rem;
+        background: #EA4F86;
+    }
+    .carousel-control-next {
+        justify-content: flex-end;
+        opacity: .9;
+    } 
+    .nav-icon-container-next {
+        padding: 1rem;
+        padding-top: 1.4rem;
+        padding-left: 1.3rem;
+        padding-right: .8rem;
+        background: #EA4F86;
     }
     .carousel-item img {
         // fixes bootstrap 4 bug: bit.ly/bootstrap4-carousel
@@ -106,7 +139,7 @@ header {
     }
     h1 {
         font-family: "Great Vibes", cursive;
-        font-size: 3rem;
+        font-size: 4rem;
     }
     .white-heart-logo {
         width: 12rem; 
@@ -114,7 +147,12 @@ header {
     }
     h5 {
         font-size: 1.3rem;
-        margin-bottom: 4rem;
+        margin-bottom: 13rem;
+    }
+    .scroll-icon {
+        width: 3rem;
+        margin-bottom: 1rem;
+        
     }
 }
 
