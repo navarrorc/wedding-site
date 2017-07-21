@@ -74,6 +74,11 @@ body {
 }
 
 // Header Styles
+.white-heart-logo {
+    width: 12rem; 
+    margin-bottom: 1.2rem;
+}
+
 header {
     .overlay {
         position: absolute;
@@ -141,10 +146,6 @@ header {
         font-family: "Great Vibes", cursive;
         font-size: 4rem;
     }
-    .white-heart-logo {
-        width: 12rem; 
-        margin-bottom: 1.2rem;
-    }
     h5 {
         font-size: 1.3rem;
         margin-bottom: 13rem;
@@ -156,8 +157,28 @@ header {
     }
 }
 
+.minimal-header {
+    height: 25vh;
+    background-size: cover;
+    background-position: 50% 20%;
+    background-repeat: no-repeat;
+    .overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 25vh;
+        font-family: "Great Vibes", cursive;
+        background-color: rgba(0,0,0,.4);
+        color: rgb(255, 255, 255);
+        z-index: 1;
+    }
+    h1 {
+        font-size: 4rem;
+    }
+}
 
 
+// Footer Styles
 footer {
     // height: 100px;
     // background: red;

@@ -48,7 +48,7 @@ function onBuild(done) {
 var devConfig  = {
     entry: './src/app.js',
     watch: true,
-    devtool: "cheap-eval-source-map",
+    devtool: "eval-source-map",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "js")
@@ -61,8 +61,15 @@ var devConfig  = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["env"]
+                        presets: ["env", "react"]
                     }
+                }
+            },
+            {
+                test: /\.json$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: "json-loader"
                 }
             }
         ]

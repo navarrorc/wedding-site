@@ -1,0 +1,8 @@
+{% assign photo_name = page.photo %}
+{% assign default_photo = "forehead-kiss-992-optimized.jpg" %}
+<div class="minimal-header" style="background-image: url(../photos/{{ photo_name | default: default_photo }});">
+    <div class="overlay d-flex flex-column align-items-center justify-content-end">
+        <h1>{{ page.title }}</h1>
+        <img src="{{ site.github.url }}/images/heart-logo.png" alt="heart logo" class="white-heart-logo">
+    </div>
+</div>
