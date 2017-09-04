@@ -1,18 +1,16 @@
----
----
 // Global Styles
 // html {
 //     font-size: 62.5%;
 // }
-@import "fonts";
+@import "partials/fonts";
 
 html {
     font-size: 62.5%;
 }
 
-body {
-    // background: url("{{ site.github.url }}/images/full_background.png");
-}
+// body {
+//     // background: url("{{ site.github.url }}/images/full_background.png");
+// }
 
 // Navigation Bar Styles
 .site-nav {
@@ -179,15 +177,15 @@ header {
 
 
 // Footer Styles
-footer {
-    // height: 100px;
-    // background: red;
-}
+// footer {
+//     // height: 100px;
+//     // background: red;
+// }
 
 
 // Overrides (Bootstrap)
-@import "overrides";
+@import "partials/overrides";
 
 
 // Media Queries
-@import "media-queries";
+@import "partials/media-queries";
