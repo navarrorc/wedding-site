@@ -10,8 +10,10 @@ const gulp = require("gulp"),
     fs = require("fs"),
     glob = require("glob"),
     sass = require("gulp-sass"),
-    runSequence = require("run-sequence");
-    
+    runSequence = require("run-sequence"),
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 let isProd = false,
     isSharePoint = false,
     jekyll = null,
@@ -22,7 +24,7 @@ const messages = {
 };
 
 function onBuild() {
-    return function(err, stats) {
+    return function (err, stats) {
         if (err) {
             gutil.log("Error", err);
         }
@@ -53,10 +55,13 @@ function onBuild() {
  * Dev Webpack Configuration
  * see: http://bit.ly/2ph6SJZ 
  */
-let devConfig = {
+const devConfig = {
     context: path.resolve(__dirname, "src"),
     entry: {
-        home: "./app.js"
+        main: [
+            "./app.js",
+            "../_sass/main.scss"
+        ]
     },
     watch: true,
     devtool: "eval-source-map",
@@ -80,9 +85,38 @@ let devConfig = {
             use: {
                 loader: "json-loader"
             }
+        }, {
+            test: /\.(css|scss)/,
+            use: ExtractTextPlugin.extract({
+                use: [
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1,
+                            sourceMap: true
+                        }
+                    },
+                    { 
+                        loader: 'postcss-loader', 
+                        options: { 
+                            plugins: () => [require('autoprefixer')],
+                            sourceMap: true 
+                        } 
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
+            })
         }]
     },
     plugins: [
+        new ExtractTextPlugin({
+            filename: "../css/[name].css",
+        })
         // new webpack.ProvidePlugin({
         //     $: 'jquery',
         //     jQuery: 'jquery'
@@ -105,11 +139,16 @@ prodConfig.plugins = prodConfig.plugins.concat(
             warnings: false
         },
         sourceMap: true
-    })
+    }),
+    new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessorOptions: { discardComments: { removeAll: true }, map: { inline: false } },
+        canPrint: true
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin() // webpack 3 feature
 );
 prodConfig.watch = false;
 prodConfig.devtool = "source-map";
-prodConfig.plugins.push(new webpack.optimize.ModuleConcatenationPlugin()); // webpack 3 feature
 // prodConfig.output.filename = prodConfig.output.filename.replace(/\.js$/, ".min.js");
 
 
@@ -117,12 +156,12 @@ prodConfig.plugins.push(new webpack.optimize.ModuleConcatenationPlugin()); // we
  * Tasks
  **************/
 
- /**
- * Process JS with webpack
- */
-gulp.task("webpack", function(done) {
+/**
+* Process JS with webpack
+*/
+gulp.task("webpack", function (done) {
     let webpackConfig = isProd ? prodConfig : devConfig;
-    webpack(webpackConfig, function(err, status) {
+    webpack(webpackConfig, function (err, status) {
         onBuild()(err, status);
 
         if (first_run) done();
@@ -133,12 +172,12 @@ gulp.task("webpack", function(done) {
 /**
  * Rename all index.html files to default.aspx
  */
-gulp.task("rename", function(done) {
-    glob("_site/**/*index.html", {}, function(er, files) {
+gulp.task("rename", function (done) {
+    glob("_site/**/*index.html", {}, function (er, files) {
         gutil.log(JSON.stringify(files, null, 4));
-        files.forEach(function(file_path) {
+        files.forEach(function (file_path) {
             let dir = file_path.substr(0, file_path.lastIndexOf('/') + 1);
-            fs.rename(`${dir}index.html`, `${dir}default.aspx`, function(err) {
+            fs.rename(`${dir}index.html`, `${dir}default.aspx`, function (err) {
                 if (err) {
                     gutil.log("ERROR: " + err);
                     throw err;
@@ -153,41 +192,41 @@ gulp.task("rename", function(done) {
 /**
  * Build the Jekyll Site
  */
-gulp.task("jekyll-build", function(done) {
+gulp.task("jekyll-build", function (done) {
     // see: https://aaronlasseigne.com/2016/02/03/using-gulp-with-jekyll/
     let exec = process.platform === "win32" ? "jekyll.bat" : "jekyll"; // see: http://bit.ly/2pzQeHk
     if (isProd) {
         if (isSharePoint) {
             jekyll = child.spawn(exec, ["build", "--incremental", "--drafts", "--config", "_config.yml,_config_prod.yml"])
-                .on("close", function(){
+                .on("close", function () {
                     done();
                 });
         }
         else {
             jekyll = child.spawn(exec, ["build", "--incremental", "--drafts"])
-                .on("close", function(){
+                .on("close", function () {
                     done();
                 });
         }
     }
     else {
         if (!first_run) browserSync.notify(messages.jekyllBuild);
-            
+
         jekyll = child.spawn(exec, ["build", "--incremental", "--drafts"])
-        .on("close", function() {
+            .on("close", function () {
                 if (!first_run) {
                     browserSync.reload();
-                } 
+                }
                 else {
                     first_run = false;
                 }
                 done(); // finished task
             });
     }
-    let jekyllLogger = function(buffer) {
+    let jekyllLogger = function (buffer) {
         buffer.toString()
             .split(/\n/)
-            .forEach(function(message) {
+            .forEach(function (message) {
                 if (message) {
                     gutil.log("Jekyll: " + message);
                 }
@@ -198,7 +237,7 @@ gulp.task("jekyll-build", function(done) {
     jekyll.stderr.on("data", jekyllLogger);
 });
 
-gulp.task("serve", function() {
+gulp.task("serve", function () {
     let options = {
         // files: ["_site/**"],
         server: {
@@ -224,42 +263,42 @@ gulp.task("serve", function() {
     // Watch scss files for changes & recompile
     // Watch html/md files, run jekyll-build which will reload BrowserSync
     let watcher_js = gulp.watch("js/bundle.js", ["copy-js"]);
-    let watcher_sass = gulp.watch("_sass/**/*.scss", ["sass"]);
+    let watcher_css = gulp.watch("css/main.css", ["css"]);
     let watcher_all = gulp.watch([
         // "*.html", 
         // "*.md",
-        "pages/**/*.html", 
-        "_layouts/*", 
-        "_includes/*", 
-        "_posts/*", 
-        "_data/*", 
-        "_sets/*", 
+        "pages/**/*.html",
+        "_layouts/*",
+        "_includes/*",
+        "_posts/*",
+        "_data/*",
+        "_sets/*",
         "_drafts/*"], ['jekyll-build']);
 
-    watcher_js.on("change", function(event){
+    watcher_js.on("change", function (event) {
         gutil.log("Watcher: File " + event.path + " was " + event.type + ", running copy-js");
     });
-    watcher_sass.on('change', function(event) {
-        gutil.log('Watcher: File ' + event.path + ' was ' + event.type + ', running sass');
+    watcher_css.on('change', function (event) {
+        gutil.log('Watcher: File ' + event.path + ' was ' + event.type + ', running css');
     });
-    watcher_all.on('change', function(event) {
+    watcher_all.on('change', function (event) {
         gutil.log('Watcher: File ' + event.path + ' was ' + event.type + ', running jekyll-build');
     });
 });
 
-gulp.task("build", function() {
+gulp.task("build", function () {
     isProd = true;
-    runSequence(["sass", "webpack"],
-                "jekyll-build");
+    runSequence(["webpack"],
+        "jekyll-build");
 });
 
-gulp.task("build-sp", function() {
+gulp.task("build-sp", function () {
     // build for SharePoint, replaces index.html to default.aspx
     isProd = true;
     isSharePoint = true;
-    runSequence(["sass", "webpack"],
-                "jekyll-build",
-                "rename");
+    runSequence(["webpack"],
+        "jekyll-build",
+        "rename");
 });
 
 gulp.task("copy-js", function () {
@@ -271,21 +310,14 @@ gulp.task("copy-js", function () {
 /**
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
  */
-gulp.task("sass", function () {
-    return gulp.src("_sass/*.scss")        
-        .pipe(sass({
-            includePaths: ["scss"],
-            outputStyle: "compressed",
-            onError: browserSync.notify("Error in CSS")
-        }).on("error", sass.logError))        
-        // .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+gulp.task("css", function () {
+    return gulp.src("css/main.css")
         .pipe(gulp.dest("_site/css"))
-        .pipe(browserSync.reload({stream:true}))
-        .pipe(gulp.dest("css"));
+        .pipe(browserSync.stream());
 });
 
-gulp.task("default", function() {
-    runSequence(["sass","webpack"],
-                "jekyll-build",
-                "serve");
+gulp.task("default", function () {
+    runSequence(["webpack"],
+        "jekyll-build",
+        "serve");
 });

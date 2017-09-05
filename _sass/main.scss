@@ -1,8 +1,9 @@
-// Global Styles
-// html {
-//     font-size: 62.5%;
-// }
 @import "partials/fonts";
+
+// Global Styles
+a {
+    transition: 1s;
+}
 
 html {
     font-size: 62.5%;
@@ -10,6 +11,7 @@ html {
 
 // body {
 //     // background: url("{{ site.github.url }}/images/full_background.png");
+//     background: red;
 // }
 
 // Navigation Bar Styles
